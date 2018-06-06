@@ -20,17 +20,17 @@ namespace Unit_35_Computer_Programming
         }
 
         List<row> table = new List<row>();
-     
-    }
-    public Form1()
+
+
+        public Form1()
         {
             InitializeComponent();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "csv Files|*.csv";
+            openFileDialog2.FileName = "";
+            openFileDialog2.Filter = "csv Files|*.csv";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -44,12 +44,23 @@ namespace Unit_35_Computer_Programming
                             table.Add(new data());
                             string[] 1 = sr.ReadLine().Split(',');
                             table.Last().time = double.Parse(r[0]);
-                            table.Last().atlimeter = double.Parse(r[1]);
+                            table.Last().altimeter = double.Parse(r[1]);
                         }
                     }
                 }
                 catch (IOException)
+                {
+                    MessageBox.Show(openFileDiaolog2.FileName + " failed to open. ");
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show(openFileDiaolog2.FileName + " is not in the right format. ");
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show(openFileDiaolog2.FileName + " is not in the right format. ");
+                }
+            }
         }
-    }
     }
 }
