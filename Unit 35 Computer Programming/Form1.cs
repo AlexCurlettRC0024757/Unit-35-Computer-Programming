@@ -27,22 +27,22 @@ namespace Unit_35_Computer_Programming
             InitializeComponent();
         }
 
-        private void calculateDCurrent()
+        private void calculateVelocity()
         {
-            for (int i=1; 1 < table.Count; i++)
+            for (int i=1; i < table.Count; i++)
             {
-                double dI = table[i].current - table[i - 1].current;
                 double dt = table[i].time - table[i - 1].time;
-                table[i].current = dI / dt;
+                double dalt = table[i].altimeter - table[i - 1].altimeter;
+                table[i].current = dalt / dt;
             }
         }
-        private void calculateDCalculate()
+        private void calculateAcceleration()
         {
             for (int i=2; i < table.Count; i++)
             {
-                double dI = table[i].current - table[i - 1].current;
+                double dv = table[i].velocity - table[i - 1].velocity;
                 double dt = table[i].time - table[i - 1].time;
-                table[i].current = dI / dt;
+                table[i].current = dv / dt;
             }
         }
 
@@ -66,8 +66,8 @@ namespace Unit_35_Computer_Programming
                             table.Last().altimeter = double.Parse(r[1]);
                         }
                     }
-                    calculateCurrent();
-                    calculateDCurrent();
+                    calculateVelocity();
+                    calculateAcceleration();
                 }
                 catch (IOException)
                 {
@@ -87,6 +87,28 @@ namespace Unit_35_Computer_Programming
                 }
             }
         }
-        private void openFile
+        private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void VelocityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart1.Series.Clear();
+            chart1.ChartAreas[0].AxisX.IsMarginVisible = false;
+            Series series = new Series
+            {
+                Name = "Velocity",
+                Color = Color.Blue,
+                IsVisible
+
+            }
+            
+        }
+
+        private void garoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
