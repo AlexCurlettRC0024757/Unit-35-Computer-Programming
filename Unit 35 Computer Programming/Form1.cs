@@ -17,8 +17,8 @@ namespace Unit_35_Computer_Programming
         {
             public double time;
             public double altimeter;
-            public double current;
-            public double dCurrent;
+            public double Velocity;
+            public double Acceleration;
         }
 
         List<row> table = new List<row>();
